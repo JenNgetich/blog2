@@ -1,0 +1,24 @@
+h1 Listing posts
+
+table.table.table-striped
+  tr
+    th Title
+    th Body
+    th
+    th
+    th
+
+  - @posts.each do |post|
+    tr
+      td = link_to post.title, post
+      td = truncate(post.body, :length => 50) 
+      td = link_to edit_post_path(post) do
+        i.icon-pencil
+        | edit
+      td = link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Post', new_post_path, class: 'btn btn-primary'
+
+
